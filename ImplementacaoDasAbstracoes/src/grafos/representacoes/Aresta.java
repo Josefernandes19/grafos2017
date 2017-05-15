@@ -7,9 +7,9 @@ package grafos.representacoes;
 
 /**
  *
- * @author a14034
+ * @author Willian Soares
  */
-public interface Aresta {
+public interface Aresta{
     //implementar uma classe abstrata e substituir as implementações anteriores.
     
 }
