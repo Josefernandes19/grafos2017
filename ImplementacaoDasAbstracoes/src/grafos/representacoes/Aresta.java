@@ -9,7 +9,22 @@ package grafos.representacoes;
  *
  * @author Willian Soares
  */
-public interface Aresta{
-    //implementar uma classe abstrata e substituir as implementações anteriores.
+public abstract class Aresta{
+    //implementar uma classe abstrata e substituir as implementações anteriores.    
+    int origem, destino;
+    double peso;
+
+    public abstract int getOrigem();
+
+    public abstract void setOrigem(int origem);
+
+    public abstract int getDestino();
+
+    public abstract void setDestino(int destino);
+
+    public abstract double getPeso();
+
+    public abstract void setPeso(double peso);
     
+
 }

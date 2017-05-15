@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class ListaDeAdjacencia implements Grafo{
 
-    List<Integer>[] vet = null; 
+    List<ArestaSimples>[] vet = null; 
     
     public ListaDeAdjacencia(int numeroDeVertices){
         this.vet = new LinkedList[numeroDeVertices];
@@ -39,12 +39,14 @@ public class ListaDeAdjacencia implements Grafo{
 
     @Override
     public void addAresta(int origem, int destino) {
-        this.vet[origem].add(destino);
+        ArestaSimples a = new ArestaSimples(origem, destino, 1);
+        this.vet[origem].add(a);
     }
 
     @Override
     public void addAresta(int origem, int destino, double peso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArestaSimples a = new ArestaSimples(origem, destino, peso);
+        this.vet[origem].add(a);
     }
 
     @Override
@@ -54,9 +56,9 @@ public class ListaDeAdjacencia implements Grafo{
 
     @Override
     public void setAresta(int origem, int destino, double peso) {
-        List<Integer> adjs = this.vet[origem];
+        List<ArestaSimples> adjs = this.vet[origem];
         for (int i = 0; i < adjs.size(); i++) {
-            if(adjs.get(i) == destino){
+            if(adjs.get(i).getDestino() == destino){
                 this.vet[origem].set(i, destino);
             }
         }
