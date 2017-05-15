@@ -5,6 +5,7 @@
  */
 package grafos;
 import grafos.representacoes.MatrizDeAdjacencia;
+import grafos.representacoes.MatrizDeIncidencia;
 import java.util.List;
 /**
  *
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        MatrizDeAdjacencia g = new MatrizDeAdjacencia(6);
+        MatrizDeIncidencia g = new MatrizDeIncidencia(6);
         g.addAresta(1, 3);
         g.addAresta(1, 5);
         System.out.println(g.getPeso(0, 1));

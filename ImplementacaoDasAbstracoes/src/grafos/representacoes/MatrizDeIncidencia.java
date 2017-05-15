@@ -35,16 +35,9 @@ public class MatrizDeIncidencia implements Grafo{
     private final int numeroVertices;
    
     
-    public MatrizDeIncidencia(int numeroVertices, int numeroArestas){
-        this.matriz = new double[numeroArestas][numeroVertices];
+    public MatrizDeIncidencia(int numeroVertices){
+        this.matriz = new double[0][numeroVertices];
         this.numeroVertices = numeroVertices;
-        
-        for (int i = 0; i < numeroArestas; i++) {
-            for (int j = 0; j < numeroVertices; j++) {
-                this.matriz[i][j] = Double.NEGATIVE_INFINITY;
-            }
-            
-        }
     }
     
     public double[][] getMatriz(){
@@ -71,6 +64,7 @@ public class MatrizDeIncidencia implements Grafo{
     @Override
     public void addAresta(int origem, int destino) {
         double[] aresta = new double[this.numeroVertices];
+        Arrays.fill(aresta, Double.NEGATIVE_INFINITY);
         aresta[origem] = 1;
         aresta[destino] = 1;
         this.matriz = addElemento(matriz, aresta);
@@ -79,6 +73,7 @@ public class MatrizDeIncidencia implements Grafo{
     @Override
     public void addAresta(int origem, int destino, double peso) {
         double[] aresta = new double[this.numeroVertices];
+        Arrays.fill(aresta, Double.NEGATIVE_INFINITY);
         aresta[origem] = peso;
         aresta[destino] = peso;
         this.matriz = addElemento(matriz, aresta);

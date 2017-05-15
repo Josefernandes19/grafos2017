@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package grafos.representacoes;
 
 import java.util.LinkedList;
@@ -23,74 +22,75 @@ import java.util.List;
  *
  * @author Willian Soares
  */
-public class MatrizDeAdjacencia implements Grafo{
+public class ListaDeAdjacencia implements Grafo{
 
-    private int[][] matriz;
-
-    public MatrizDeAdjacencia(int numeroDeVertices) {
-        this.matriz = new int[numeroDeVertices][numeroDeVertices];
+    List<Integer>[] vet = null; 
+    
+    public ListaDeAdjacencia(int numeroDeVertices){
+        this.vet = new LinkedList[numeroDeVertices];
+        for (int i = 0; i < numeroDeVertices; i++)
+            this.vet[i] = new LinkedList<>();
     }
-
-    public int[][] getMatriz() {
-        return matriz;
-    }
-
+    
     @Override
     public int getNumeroDeVertices() {
-        return this.matriz.length;
+        return this.vet.length;
     }
 
     @Override
     public void addAresta(int origem, int destino) {
-        if (origem != destino) {
-            this.matriz[origem][destino] = 1;
-            this.matriz[destino][origem] = 1;
-        }
+        this.vet[origem].add(destino);
     }
 
     @Override
     public void addAresta(int origem, int destino, double peso) {
-        if (origem != destino) {
-            this.matriz[origem][destino] = (int)peso;
-            this.matriz[destino][origem] = (int)peso;
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setAresta(int origem, int destino) {
-        this.addAresta(origem, destino);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setAresta(int origem, int destino, double peso) {
-        this.addAresta(origem, destino, peso);
+        List<Integer> adjs = this.vet[origem];
+        for (int i = 0; i < adjs.size(); i++) {
+            if(adjs.get(i) == destino){
+                this.vet[origem].set(i, destino);
+            }
+        }
     }
 
     @Override
     public void removeAresta(int origem, int destino) {
-        this.setAresta(origem, destino, 0);
+        List<Integer> adjs = this.vet[origem];
+        for (int i = 0; i < adjs.size(); i++) {
+            if(adjs.get(i) == destino){
+                this.vet[origem].remove(i);
+            }
+        }
     }
-
+    
     @Override
     public boolean isAdjacente(int origem, int destino) {
-        return this.matriz[origem][destino] != 0
-                || this.matriz[destino][origem] != 0;
+        List<Integer> adjs = this.vet[origem];
+        for (int i = 0; i < adjs.size(); i++) {
+            if(adjs.get(i) == destino){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public List getAdjacentes(int vertice) {
-        List<Integer> adj = new LinkedList<>();
-        for (int coluna = 0; coluna < this.matriz[vertice].length; coluna++) {
-            if (isAdjacente(vertice, coluna)) {
-                adj.add(coluna);
-            }
-        }
-        return adj;
+        return this.vet[vertice];
     }
 
     @Override
     public double getPeso(int origem, int destino) {
-        return this.matriz[origem][destino];
+        return this.isAdjacente(origem, destino) == true ? 1 : Integer.MAX_VALUE;
     }
-
+    
 }
