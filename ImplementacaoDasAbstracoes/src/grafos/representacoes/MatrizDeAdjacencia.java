@@ -16,6 +16,7 @@
 
 package grafos.representacoes;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -91,6 +92,37 @@ public class MatrizDeAdjacencia implements Grafo{
     @Override
     public double getPeso(int origem, int destino) {
         return this.matriz[origem][destino];
+    }
+
+    @Override
+    public void addVertice() {
+        this.matriz = Arrays.copyOf(this.matriz, this.matriz.length + 1);
+        for (int i = 0; i < matriz.length; i++) {
+            this.matriz[i] = Arrays.copyOf(this.matriz[i], this.matriz.length);
+            //Testar null pointer excepion aqui, provavelmente tentando criar uma coluna onde nao existe uma linha
+        }
+    }
+
+    @Override
+    public void removeVertice(int vertice) {
+        for (int i = 0; i < matriz.length; i++) {
+            this.matriz[i][vertice] = Integer.MAX_VALUE;
+            for (int j = vertice; j < matriz.length; j++) {
+                this.matriz[i][j - 1] = this.matriz[i][j];
+            }
+        }
+        this.matriz[vertice] = null;
+        this.matriz = Arrays.copyOf(this.matriz, this.matriz.length - 1);
+        
+    }
+    
+    public void getVertices(){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                System.out.print(this.matriz[i][j]);
+            }
+            System.out.println("");
+        }
     }
 
 }

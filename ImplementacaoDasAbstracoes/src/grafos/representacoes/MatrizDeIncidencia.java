@@ -142,4 +142,14 @@ public class MatrizDeIncidencia implements Grafo{
         else
             return this.matriz[(int)i][destino];
     }
+
+    @Override
+    public void addVertice() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeVertice(int vertice) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

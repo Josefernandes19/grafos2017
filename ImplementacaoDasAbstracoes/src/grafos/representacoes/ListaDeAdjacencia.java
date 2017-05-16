@@ -15,6 +15,7 @@
  */
 package grafos.representacoes;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,18 +58,19 @@ public class ListaDeAdjacencia implements Grafo{
     @Override
     public void setAresta(int origem, int destino, double peso) {
         List<ArestaSimples> adjs = this.vet[origem];
+        ArestaSimples a = new ArestaSimples(destino, origem, peso);
         for (int i = 0; i < adjs.size(); i++) {
             if(adjs.get(i).getDestino() == destino){
-                this.vet[origem].set(i, destino);
+                this.vet[origem].set(i, a);
             }
         }
     }
 
     @Override
     public void removeAresta(int origem, int destino) {
-        List<Integer> adjs = this.vet[origem];
+        List<ArestaSimples> adjs = this.vet[origem];
         for (int i = 0; i < adjs.size(); i++) {
-            if(adjs.get(i) == destino){
+            if(adjs.get(i).getDestino() == destino){
                 this.vet[origem].remove(i);
             }
         }
@@ -76,9 +78,9 @@ public class ListaDeAdjacencia implements Grafo{
     
     @Override
     public boolean isAdjacente(int origem, int destino) {
-        List<Integer> adjs = this.vet[origem];
+        List<ArestaSimples> adjs = this.vet[origem];
         for (int i = 0; i < adjs.size(); i++) {
-            if(adjs.get(i) == destino){
+            if(adjs.get(i).getDestino() == destino){
                 return true;
             }
         }
@@ -93,6 +95,17 @@ public class ListaDeAdjacencia implements Grafo{
     @Override
     public double getPeso(int origem, int destino) {
         return this.isAdjacente(origem, destino) == true ? 1 : Integer.MAX_VALUE;
+    }
+
+    @Override
+    public void addVertice() {
+        this.vet = Arrays.copyOf(this.vet, this.vet.length+1);
+    }
+
+    @Override
+    public void removeVertice(int vertice) {
+        this.vet[vertice] = null;
+        this.vet = Arrays.copyOf(this.vet, this.vet.length - 1);
     }
     
 }
