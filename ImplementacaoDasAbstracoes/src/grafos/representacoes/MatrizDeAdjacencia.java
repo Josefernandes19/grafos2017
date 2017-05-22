@@ -96,26 +96,14 @@ public class MatrizDeAdjacencia implements Grafo{
 
     @Override
     public void addVertice() {
-        this.matriz = Arrays.copyOf(this.matriz, this.matriz.length + 1);
-        for (int i = 0; i < matriz.length; i++) {
-            this.matriz[i] = Arrays.copyOf(this.matriz[i], this.matriz.length);
-            //Testar null pointer excepion aqui, provavelmente tentando criar uma coluna onde nao existe uma linha
-        }
+        int numeroVertice = this.matriz.length;
+        int[][] newMatriz = new int[numeroVertice + 1][numeroVertice + 1];
+        for (int i = 0; i < numeroVertice; i++)
+            for (int j = 0; j < numeroVertice; j++)
+                newMatriz[i][j] = this.matriz[i][j];
+        this.matriz = newMatriz;
     }
 
-    @Override
-    public void removeVertice(int vertice) {
-        for (int i = 0; i < matriz.length; i++) {
-            this.matriz[i][vertice] = Integer.MAX_VALUE;
-            for (int j = vertice; j < matriz.length; j++) {
-                this.matriz[i][j - 1] = this.matriz[i][j];
-            }
-        }
-        this.matriz[vertice] = null;
-        this.matriz = Arrays.copyOf(this.matriz, this.matriz.length - 1);
-        
-    }
-    
     public void getVertices(){
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {

@@ -100,12 +100,7 @@ public class ListaDeAdjacencia implements Grafo{
     @Override
     public void addVertice() {
         this.vet = Arrays.copyOf(this.vet, this.vet.length+1);
+        this.vet[vet.length-1] = null;
     }
 
-    @Override
-    public void removeVertice(int vertice) {
-        this.vet[vertice] = null;
-        this.vet = Arrays.copyOf(this.vet, this.vet.length - 1);
-    }
-    
 }

@@ -44,7 +44,4 @@ public interface Grafo {
     
     public void addVertice();
     
-    public void removeVertice(int vertice);
-    
-    
 }
