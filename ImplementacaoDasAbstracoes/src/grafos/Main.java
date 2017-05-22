@@ -14,15 +14,15 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        TestAddArestaListaAdjacencia testAddArestaListaAdjacencia = new TestAddArestaListaAdjacencia();
-        TestAddArestaMatrizAdjacencia testAddArestaMatrizAdjacencia = new TestAddArestaMatrizAdjacencia();
+        //TestAddArestaListaAdjacencia testAddArestaListaAdjacencia = new TestAddArestaListaAdjacencia();
+        //TestAddArestaMatrizAdjacencia testAddArestaMatrizAdjacencia = new TestAddArestaMatrizAdjacencia();
         
-        TestAddVerticeListaAdjacencia testAddVerticeListaAdjacencia = new TestAddVerticeListaAdjacencia();
+        //TestAddVerticeListaAdjacencia testAddVerticeListaAdjacencia = new TestAddVerticeListaAdjacencia();
         TestAddVerticeMatrizAdjacencia testAddVerticeMatrizAdjacencia = new TestAddVerticeMatrizAdjacencia();
         
-        testAddArestaListaAdjacencia.testSequencial();
-        testAddArestaMatrizAdjacencia.testSequencial();
-        testAddVerticeListaAdjacencia.testSequencial();
+        //testAddArestaListaAdjacencia.testSequencial();
+        //testAddArestaMatrizAdjacencia.testSequencial();
+        //testAddVerticeListaAdjacencia.testSequencial();
         testAddVerticeMatrizAdjacencia.testSequencial();
     }
 }
