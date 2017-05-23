@@ -36,7 +36,7 @@ public class TestAddVerticeListaAdjacencia {
         return System.nanoTime() - inicio;
     }
     public long[] testSequencial(){
-        long[] values = {3, 13, 130, 1300, 13000, 130000, 1300000, 13000000};
+        long[] values = {3, 13, 130, 500, 1300, 2600, 5000, 8000, 13000, 26000};
         long inicio;
         for (int i = 0; i < values.length; i++) {
             this.grafo = new ListaDeAdjacencia((int)values[i]);
@@ -45,6 +45,7 @@ public class TestAddVerticeListaAdjacencia {
             values[i] = System.nanoTime() - inicio;
             System.out.println(values[i]);
         }
+        this.grafo = new ListaDeAdjacencia(0);
         return values;
     }
     

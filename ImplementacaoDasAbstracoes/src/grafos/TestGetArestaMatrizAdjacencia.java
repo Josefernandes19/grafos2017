@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
-*/
+ */
 package grafos;
 
 import grafos.representacoes.MatrizDeAdjacencia;
@@ -21,10 +21,10 @@ import grafos.representacoes.MatrizDeAdjacencia;
  *
  * @author Willian Soares
  */
-public class TestAddVerticeMatrizAdjacencia {
-    MatrizDeAdjacencia grafo;
+public class TestGetArestaMatrizAdjacencia {
+        MatrizDeAdjacencia grafo;
     
-    public TestAddVerticeMatrizAdjacencia() {
+    public TestGetArestaMatrizAdjacencia() {
         this.grafo = new MatrizDeAdjacencia(0);
     }
     
@@ -41,13 +41,12 @@ public class TestAddVerticeMatrizAdjacencia {
         for (int i = 0; i < values.length; i++) {
             this.grafo = new MatrizDeAdjacencia((int)values[i]);
             inicio = System.nanoTime();
-            this.grafo.addVertice();
+            grafo.getPeso((int)values[i] - 1, (int)values[i] - 1);
             values[i] = System.nanoTime() - inicio;
             System.out.println(values[i]);
         }
         this.grafo = new MatrizDeAdjacencia(0);
         return values;
     }
-    
     
 }
